@@ -11,20 +11,20 @@ function displayResults(responseJson) {
   console.log(responseJson.message);
   //replace the existing image with the new one
   let result = responseJson.message
+  $('.hidden').append('<h2>Look at this dog!</h2>');
   for (let i = 0; i < result.length; i++){
   $('.hidden').append(
     `<img src="${responseJson.message[i]}" class="results-img">`
   );
   }
-  //display the results section
-  $('.results').removeClass('hidden');
+ 
 }
 
 function watchForm() {
   $('button').on('click', function(event) {
     event.preventDefault();
     let imgNum = $('.js-results').val();
-    $('.results-img').removeAttr();
+    $('.hidden').empty();
     getDogImage(imgNum);
   });
 }
